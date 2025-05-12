@@ -1,26 +1,27 @@
-import MockDate from 'mockdate'
-import dayjs from '../src'
+import MockDate from 'mockdate';
+import { afterEach, beforeEach, expect, it } from 'vitest';
+import dayjs from '../dist';
 
 beforeEach(() => {
-  MockDate.set(new Date())
-})
+  MockDate.set(new Date());
+});
 
 afterEach(() => {
-  MockDate.reset()
-})
+  MockDate.reset();
+});
 
 it('supports instanceof dayjs', () => {
-  expect(dayjs() instanceof dayjs).toBeTruthy()
-})
+  expect(dayjs() instanceof dayjs).toBeTruthy();
+});
 
 it('$isDayjsObject', () => {
   const mockOtherVersionDayjsObj = {
-    $isDayjsObject: true
-  }
-  expect(dayjs.isDayjs(mockOtherVersionDayjsObj)).toBeTruthy()
-})
+    $isDayjsObject: true,
+  };
+  expect(dayjs.isDayjs(mockOtherVersionDayjsObj)).toBeTruthy();
+});
 
 it('does not break isDayjs', () => {
-  expect(dayjs.isDayjs(dayjs())).toBeTruthy()
-  expect(dayjs.isDayjs(new Date())).toBeFalsy()
-})
+  expect(dayjs.isDayjs(dayjs())).toBeTruthy();
+  expect(dayjs.isDayjs(new Date())).toBeFalsy();
+});

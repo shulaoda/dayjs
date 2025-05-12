@@ -1,35 +1,36 @@
-import MockDate from 'mockdate'
-import dayjs from '../src'
+import MockDate from 'mockdate';
+import { afterEach, beforeEach, expect, it } from 'vitest';
+import dayjs from '../dist';
 
 const testPlugin = (o, c, d) => {
-  c.prototype.newApi = () => ('hello world')
-  d.newFunc = () => ('hi world')
-}
+  c.prototype.newApi = () => ('hello world');
+  d.newFunc = () => ('hi world');
+};
 const testPluginWithConfig = (o, c) => {
-  c.prototype.newApiWithConfig = () => (`hello world ${o || ''}`)
-}
+  c.prototype.newApiWithConfig = () => (`hello world ${o || ''}`);
+};
 
-dayjs.extend(testPlugin)
-dayjs.extend(testPluginWithConfig, 'good')
+dayjs.extend(testPlugin);
+dayjs.extend(testPluginWithConfig, 'good');
 
 beforeEach(() => {
-  MockDate.set(new Date())
-})
+  MockDate.set(new Date());
+});
 
 afterEach(() => {
-  MockDate.reset()
-})
+  MockDate.reset();
+});
 
 it('Plugin extend method and option', () => {
-  expect(dayjs().newApi()).toBe('hello world')
-  expect(dayjs().newApiWithConfig()).toBe('hello world good')
-})
+  expect(dayjs().newApi()).toBe('hello world');
+  expect(dayjs().newApiWithConfig()).toBe('hello world good');
+});
 
 it('Plugin extend dayjs', () => {
-  expect(dayjs.newFunc()).toBe('hi world')
-})
+  expect(dayjs.newFunc()).toBe('hi world');
+});
 
 it('Plugin use core utils', () => {
   // u => isUndefined
-  expect(dayjs().$utils().u).toBeInstanceOf(Function)
-})
+  expect(dayjs().$utils().u).toBeInstanceOf(Function);
+});

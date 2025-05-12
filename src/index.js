@@ -465,3 +465,6 @@ dayjs.en = Ls[L]
 dayjs.Ls = Ls
 dayjs.p = {}
 export default dayjs
+export * from "./plugin"
+export * from "./constant"
+export const utils = U

@@ -1,18 +1,18 @@
-import MockDate from 'mockdate'
-import moment from 'moment'
-import dayjs from '../../src'
-import toObject from '../../src/plugin/toObject'
+import MockDate from 'mockdate';
+import moment from 'moment';
+import { afterEach, beforeEach, expect, it } from 'vitest';
+import dayjs, { toObject } from '../../dist';
 
-dayjs.extend(toObject)
+dayjs.extend(toObject);
 
 beforeEach(() => {
-  MockDate.set(new Date())
-})
+  MockDate.set(new Date());
+});
 
 afterEach(() => {
-  MockDate.reset()
-})
+  MockDate.reset();
+});
 
 it('As Object -> toObject', () => {
-  expect(dayjs().toObject()).toEqual(moment().toObject())
-})
+  expect(dayjs().toObject()).toEqual(moment().toObject());
+});

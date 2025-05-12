@@ -1,3 +1,3 @@
-const dayjs = require('../../src')
+const dayjs = require('../../dist');
 
-module.exports = dayjs
+module.exports = dayjs;
